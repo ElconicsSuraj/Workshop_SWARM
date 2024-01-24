@@ -1,0 +1,72 @@
+#include <Arduino.h>
+
+// Define motor control pins
+const int motor1A = 14;
+const int motor1B = 12;
+const int motor2A = 13;
+const int motor2B = 15;
+
+void setup() {
+  // Set motor control pins as outputs
+  pinMode(motor1A, OUTPUT);
+  pinMode(motor1B, OUTPUT);
+  pinMode(motor2A, OUTPUT);
+  pinMode(motor2B, OUTPUT);
+}
+
+void loop() {
+  // Move forward
+  moveForward();
+  delay(10000);
+
+  // Move backward
+  moveBackward();
+  delay(10000);
+
+  // Turn right
+  turnRight();
+  delay(10000);
+
+  // Turn left
+  turnLeft();
+  delay(10000);
+
+  // Stop
+  stopMotors();
+  delay(10000);
+}
+
+void moveForward() {
+  digitalWrite(motor1A, HIGH);
+  digitalWrite(motor1B, LOW);
+  digitalWrite(motor2A, HIGH);
+  digitalWrite(motor2B, LOW);
+}
+
+void moveBackward() {
+  digitalWrite(motor1A, LOW);
+  digitalWrite(motor1B, HIGH);
+  digitalWrite(motor2A, LOW);
+  digitalWrite(motor2B, HIGH);
+}
+
+void turnRight() {
+  digitalWrite(motor1A, HIGH);
+  digitalWrite(motor1B, LOW);
+  digitalWrite(motor2A, LOW);
+  digitalWrite(motor2B, HIGH);
+}
+
+void turnLeft() {
+  digitalWrite(motor1A, LOW);
+  digitalWrite(motor1B, HIGH);
+  digitalWrite(motor2A, HIGH);
+  digitalWrite(motor2B, LOW);
+}
+
+void stopMotors() {
+  digitalWrite(motor1A, LOW);
+  digitalWrite(motor1B, LOW);
+  digitalWrite(motor2A, LOW);
+  digitalWrite(motor2B, LOW);
+}
